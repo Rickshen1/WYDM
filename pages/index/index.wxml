@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  
+  <!-- <view class="btn-area">
+    <view class="body-view">
+      <text>{{text}}</text>
+      <button bindtap="add">add line</button>
+      <button bindtap="remove">remove line</button>
+    </view>
+  </view> -->
+
+  <view class="userLocation">
+    <button wx:if="{{!hasuserLocation}}" bindtap="getuserLoc" >获取用户定位</button>
+    <block wx:else>
+      <text class="latitude">{{latitude}}</text>
+      <text class="longitude">  {{longitude}}</text>
+      <button class="openLoc" bindtap="openuserLoc"  >打开地图</button>
+    </block>
+  </view>
+  
+  <view class="usermotto">
+    <input class="searchInput" name="searchInput" bindinput="userSearchInput" placeholder="请输入搜索ID" size="mini"/>
+    <button class="searchbutton" bindtap="searchBtn" size="mini">搜索</button>
+  </view>
+  
+    <text class="user-motto">小区cgi： {{cellcgi}}     </text>
+    <text class="user-motto">小区名： {{cellname}}    </text>
+    <text class="user-motto">小区经度： {{celllongitude}}  </text>
+    <text class="user-motto">小区纬度： {{celllatitude}}  </text>
+    <text class="user-motto">小区pci： {{cellpci}}    </text>
+  
+    <button  bindtap="getcellLoc" >小区定位</button>
+
+</view>
