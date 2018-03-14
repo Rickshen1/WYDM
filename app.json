@@ -1,9 +1,13 @@
 {
   "pages":[
+    "pages/callPage/callpage",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/callPage/callpage",
-    "pages/map/map"
+    
+    "pages/map/map",
+    
+    "pages/displayData/displayData",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light", 

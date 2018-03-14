@@ -1,0 +1,15 @@
+<!--pages/displayData/displayData.wxml-->
+<view class="page">
+<!--页头-->
+<view class="page__hd">
+<text style="width=100%;font-weight:bold;justify-content:center;">{{displayItemJson.cellname}}</text>
+</view>
+<view class="page__bd"></view>
+<view style="width=100%;border-top:1rpx solid #ccc">cgi:{{displayItemJson.cgi}}</view>
+<view style="width=100%;border-top:1rpx solid #ccc">longitude:{{displayItemJson.longitude}}</view>
+<view style="width=100%;border-top:1rpx solid #ccc">latitude:{{displayItemJson.latitude}}</view>
+<view style="width=100%;border-top:1rpx solid #ccc">pci:{{displayItemJson.pci}}</view>
+<view style="width=100%;border-top:1rpx solid #ccc">rsrp:{{displayItemJson.rsrp}}</view>
+</view>
+
+
