@@ -1,2 +1,0 @@
-# WYDM
-CMCC weixinChatAPP

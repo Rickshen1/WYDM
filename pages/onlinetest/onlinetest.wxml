@@ -1,0 +1,28 @@
+  <!--顶部导航栏-->  
+  <view class="swiper-tab">  
+    <view class="tab-item" >
+         <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo"       bindgetuserinfo="getUserInfo"> 获取用户信息 </button>
+        <block wx:else>
+          <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" style="width:30px; height:30px" />
+           <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>  
+    <view class="tab-item" >
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" style="width:30px; height:30px" />
+      <text>积分： {{userScore}}</text>
+    </view>  
+    <view class="tab-item">
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="sc.jpg" style="width:30px; height:30px" />
+      <text class="userinfo-nickname">收藏</text>
+    </view>  
+  </view>  
+  
+
+  <!--游戏栏-->
+  <view class="funBtnGroup">
+    <button class="persontestBtn" style="width:150px;height:50px">个人挑战</button>
+  </view>
+
+  <view class="funBtnGroup">
+    <button class="PKtestBtn"  style="width:150px;height:50px">PK答题</button>
+  </view>

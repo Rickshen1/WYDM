@@ -1,13 +1,15 @@
 {
   "pages":[
-    "pages/callPage/callpage",
+
     "pages/index/index",
     "pages/logs/logs",
     
     "pages/map/map",
     
     "pages/displayData/displayData",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/onlinetest/onlinetest",
+    "pages/callPage/callpage"
   ],
   "window":{
     "backgroundTextStyle":"light", 
@@ -24,11 +26,11 @@
       "pagePath": "pages/map/map",
       "text": "地图"
     },{
-      "pagePath":"pages/callPage/callpage",
-      "text":"通话"
+      "pagePath":"pages/search/search",
+      "text":"搜索"
     },{
-    "pagePath":"pages/logs/logs",
-    "text":"日志"
+    "pagePath":"pages/onlinetest/onlinetest",
+    "text":"在线测试"
     }]
   },
   "networkTimeout":{

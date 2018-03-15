@@ -5,7 +5,10 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    wx.setStorage({
+      key: 'userScore',
+      data: '100',
+    })
     // 登录
     wx.login({
       success: res => {
