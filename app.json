@@ -1,14 +1,13 @@
 {
   "pages":[
-
     "pages/index/index",
     "pages/logs/logs",
-    
     "pages/map/map",
-    
     "pages/displayData/displayData",
     "pages/search/search",
     "pages/onlinetest/onlinetest",
+    "pages/collection/collection",
+    "pages/personaltest/personaltest",
     "pages/callPage/callpage"
   ],
   "window":{

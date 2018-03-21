@@ -45,7 +45,6 @@ Page({
         }
       })
     }
-  
     wx.getStorage({
       key: 'userScore',
       success: res=> {
@@ -54,7 +53,9 @@ Page({
         })
       },
     })
+
   },
+
   /**
    * 获取用户信息
   */
@@ -64,6 +65,28 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  /**
+   * 点击收藏 跳转
+  */
+  collectionNavigateTo: function(e){
+    wx.navigateTo({
+      url: '../collection/collection',
+    })
+  },
+  /**
+   * 点击“个人挑战”跳转
+  */
+  personaltestBtn:function(){
+    wx.showToast({
+      title: '成功',
+      icon: 'succes',
+      duration: 3000,
+      mask: true
+    })
+    wx.navigateTo({
+      url: '../personaltest/personaltest',
     })
   },
   /**

@@ -1,0 +1,6 @@
+<!--顶部栏-->
+<view class="swiper-tab">
+  <view class="tab-item" wx:for="{{collectionID}}">
+    <text >{{collectionID[index]}}</text>
+  </view>
+</view>
