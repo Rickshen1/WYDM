@@ -20,15 +20,15 @@ function allItems() {
       {
         question: ['question 1'],
         options: ['选项A','选项B','选项C','选项D'],
-        anstwers: ['a','b','c']
+        answers: ['a','b','c']
        }, {
          question: ['question 2'],
          options: ['选项A', '选项B', '选项C', '选项D'],
-         anstwers: ['b', 'c']
+         answers: ['b', 'c']
        }, {
         question: ['question 3'],
         options: ['选项A', '选项B', '选项C', '选项D'],
-        anstwers: ['c']
+        answers: ['c']
       },
      ]
   }

@@ -6,10 +6,10 @@
 
 <view class="items" >
     <text>{{allItems.question}}</text>
-    <checkbox-group>
+    <checkbox-group bindchange="checkboxchange">
       <label class="items" wx:for="{{allItems.options}}">
        <!-- <text>{{allItems.options[index]}}</text> -->
-       <checkbox value="{{allItems.options[index]}}">{{allItems.options[index]}} </checkbox>
+       <checkbox value="{{allOptions[index]}}" checked="{{initOptions[index]}}">{{allItems.options[index]}} </checkbox>
       </label>
     </checkbox-group>
 </view>
@@ -17,3 +17,4 @@
 <view>
   <button bindtap='submitFun' style="margin-top:10px">确认</button>
 </view>
+

@@ -1,6 +1,6 @@
 // pages/onlinetest/onlinetest.js
-const app = getApp()
-
+const app = getApp();
+var score = 0
 Page({
 
   /**
@@ -9,7 +9,7 @@ Page({
   data: {
     userScore: '1',
     phone: '13810224472',
-    userInfo: { 'score': '10' },
+    userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     accuracy_rate:'0'
@@ -45,15 +45,10 @@ Page({
         }
       })
     }
-    wx.getStorage({
-      key: 'userScore',
-      success: res=> {
-        this.setData({
-          userScore: res.data
-        })
-      },
+    score =  wx.getStorageSync('userScore')
+    this.setData({
+          userScore: score
     })
-
   },
 
   /**
@@ -80,13 +75,13 @@ Page({
   */
   personaltestBtn:function(){
     wx.showToast({
-      title: '成功',
+      title: '个人挑战开始...',
       icon: 'succes',
       duration: 3000,
       mask: true
     })
     wx.navigateTo({
-      url: '../personaltest/personaltest',
+       url: '../personaltest/personaltest',
     })
   },
   /**

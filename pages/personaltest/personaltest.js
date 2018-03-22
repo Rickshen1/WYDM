@@ -3,6 +3,8 @@ var timeintv;//全局变量定时器
 var timer="倒计时开始"; //全局定时器剩余值变量
 const app = getApp();
 var dataItems = require("../../utils/items.js");
+var score = 0;    //本局获得分数
+var userscore;    //用户已有分数
 Page({
 
   /**
@@ -11,7 +13,10 @@ Page({
   data: {
     second:0,
     allItems:dataItems.allItems().list1[0],
-    page:0
+    page:1,
+    options:[],           //用户选择答案
+    allOptions:['A','B','C','D','E','F'],   //罗列所有选项序号，方便获取并判断
+    initOptions: [false, false, false, false, false, false, false]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -22,7 +27,9 @@ Page({
   secondOver: function () {
     var bakthis = this;
     if (bakthis.data.page >= 3) {
-      wx.navigateTo({
+      userscore = wx.getStorageSync("userScore")
+      wx.setStorageSync("userScore", userscore+score)
+      wx.switchTab({
         url: '../onlinetest/onlinetest',
       })
     }
@@ -30,25 +37,24 @@ Page({
       bakthis.setData({
         page: bakthis.data.page + 1,
         allItems: dataItems.allItems().list1[bakthis.data.page],
-        second: 15
+        second: 15,
+        options:[]
       })
       bakthis.countDown(1000, 15);
     }
-
   },
+  /**
+   * 倒计时
+  */
   countDown: function (options,t) {
     //options：时间间隔，t：次数
     var bakthis = this;//缓存一下this
     timer=t;
-
-    // bakthis.setData({
-    //   items: bakthis.allItems[itemindex]
-    // })
     timeintv=setInterval(function () {
       bakthis.setData({
         second: timer-=1
       });
-      if (timer == 0) {
+      if (timer <= 0) {
         clearInterval(timeintv);
         bakthis.setData({
           second: '计时结束',
@@ -68,7 +74,17 @@ Page({
   */
   submitFun:function(e){
     var bakthis = this;
+    if (bakthis.data.allItems.answers.sort().toString().toLowerCase() == bakthis.data.options.sort().toString().toLowerCase() ) {
+      score+=10;
+      console.log('答案正确：', bakthis.data.allItems.answers, '得分：',score)
+    }
     bakthis.secondOver();
+  },
+  checkboxchange:function(e){
+    var bakthis = this;
+    bakthis.setData({
+      options:e.detail.value
+    })
   },
   /**
    *点击收藏按钮
