@@ -1,15 +1,28 @@
 <!--pages/search/search.wxml-->
-<view class="search page_row">  
-  <input placeholder="请输入你要搜索的内容" bindinput="getSearchInput" />  
-  <button bindtap="searchItem">search</button>  
-  
+<view class="weui-search-bar">   
+  <view class="weui-search-bar__form">     
+    <view class="weui-search-bar__box">        
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>        
+      <input type="text" class="weui-search-bar__input" placeholder="输入规范名称"  bindfocus="wxSerchFocus" bindinput="wxSearchInput" bindblur="wxSearchBlur" />        
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">          
+      <icon type="clear" size="14"></icon>        
+      </view>
+    </view>   
+  </view>  
 </view>  
-<view class="search_no" wx:if="{{!content_show}}">  
-  <text>很抱歉,没有找到您要搜索的资料/(ㄒoㄒ)/~~</text>  
-</view>  
-<scroll-view style="height:300px" scroll-y="true" bindscrolltolower="scrollToLowerHandler">
-        <block wx:for="{{resJsonData}}" wx:key="{{cgi}}">
-           <view class="tr bg-g" id="{{item.cgi}}" bindtap="itemClick" wx:if="{{index %2 == 0}}">{{item.cellname}}</view>
-           <view class="tr" id="{{item.cgi}}" bindtap="itemClick" wx:else>{{item.cellname}}</view>
-        </block>
-    </scroll-view>
+<view wx:if="{{showHotSearch}}">
+  <view>
+    <text>  热门搜索：</text>
+  </view>
+  <view class="myFlex" >
+    <view wx:for="{{hotSearchItems}}" wx:key="{{index}}">
+    <button class="flexItem" plain="true" data-gag="{{item}}" bindtap="itemClick">{{item}}</button>
+  </view>
+  </view>
+</view>
+<view wx:for="{{hitData}}" wx:key="{{chineseName}}">
+  <button class="tr bg-g" id="{{index}}" data-gag="{{item.chineseName}}" bindtap="itemClick" wx:if="{{index %2 == 0}}">{{item.chineseName}}</button>
+  <button class="tr" id="{{index}}" data-gag="{{item.chineseName}}" bindtap="itemClick" wx:else>{{item.chineseName}}</button>
+</view>
+
+<!--button data-gag="最大方位角" bindtap="itemClick">级{{testVal}}</button-->
