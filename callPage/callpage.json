@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor":"#ff0",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"添加手机联系人",
+  "backgroundColor":"#eeeeee",
+  "backgroundTextStyle":"light",
+  "enablePullDownRefresh":false
+}

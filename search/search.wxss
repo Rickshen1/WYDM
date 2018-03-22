@@ -1,0 +1,12 @@
+/* pages/search/search.wxss */
+.myFlex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.flexItem{
+  line-height: 60rpx;
+}

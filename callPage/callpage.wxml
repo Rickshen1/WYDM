@@ -1,0 +1,69 @@
+<!--pages/myPage/myPage.wxml-->
+<view class="weui-search-bar" bindtap="navigateToSearch">   
+  <view class="weui-search-bar__form">     
+    <view class="weui-search-bar__box">        
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>        
+      <input type="text" class="weui-search-bar__input" placeholder="请输入规范中文关键字"  value="{{searchValue}}" />        
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">          
+      <icon type="clear" size="14"></icon>        
+      </view>
+    </view>   
+  </view>  
+</view>
+<!--view class="container"> 
+  
+    <view class='page_row' bindtap="navigateToSearch">  
+        <view class="search">  
+            <view class="df search_arr">  
+                <icon class="searchcion" size='20' type='search'></icon>  
+                <input class="" disabled placeholder="请输入查找关键字" value="{{searchValue}}"/>  
+            </view>  
+        </view>  
+        <view class='searchLabel'>搜索</view>  
+    </view>  
+    <button bindtap="btnClick">{{btnText}}</button>
+    <scroll-view style="height:300px" scroll-y="true" bindscrolltolower="scrollToLowerHandler">
+        <block wx:for="{{listData}}" wx:key="{{cgi}}">
+           <view class="tr bg-g" id="{{index}}" bindtap="itemClick" wx:if="{{index %2 == 0}}">{{item.cellname}}</view>
+           <view class="tr" id="{{index}}" bindtap="itemClick" wx:else>{{item.cellname}}</view>
+           
+        </block>
+    </scroll-view>
+    
+</view>-->
+
+<view class='text'>
+  <text>指标分类导航</text>
+</view>
+<view wx:for="{{list}}" wx:key="content" wx:for-index="key">
+
+  <view class="list-item">
+    <view class="index-list-item">
+      <view class="cover">
+        <image class="cover-img" wx:if="{{item.hidden}}" src="../img/{{key}}-1.png"></image>
+        <image class="cover-img" wx:if="!{{item.hidden}}" src="../img/{{key}}-2.png"></image>
+      </view>
+        <view class="content">
+          
+          <view class="weui-cell__bd" data-index='{{key}}' bindtap='hiddenBtn'>{{item.title}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access" data-index='{{key}}' bindtap='hiddenBtn' >点击</view>
+        </view>
+  </view>
+</view>
+
+  <view hidden='{{item.hidden}}'>
+    <view class='line'></view>
+    <view class='content'>
+     <scroll-view style="height:300px" scroll-y="true" bindscrolltolower="scrollToLowerHandler">
+        <block wx:for="{{item.arrData}}" wx:key="{{item.englishName}}">
+           <view class="tr bg-g" id="{{index}}" data-typeid="{{key}}" bindtap="itemClick" wx:if="{{index %2 == 0}}">{{item.chineseName}}</view>
+           <view class="tr" id="{{index}}" data-typeid="{{key}}" bindtap="itemClick" wx:else>{{item.chineseName}}</view>
+           
+        </block>
+    </scroll-view>
+    </view>
+  </view>
+  <view class='line_bottom'></view>
+</view>
+
+
