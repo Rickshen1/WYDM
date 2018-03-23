@@ -25,7 +25,7 @@
       "pagePath": "pages/map/map",
       "text": "地图"
     },{
-      "pagePath":"pages/search/search",
+      "pagePath":"pages/callPage/callpage",
       "text":"搜索"
     },{
     "pagePath":"pages/onlinetest/onlinetest",
