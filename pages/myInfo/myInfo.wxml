@@ -1,0 +1,30 @@
+<view class="firstBar">
+ 
+   <view class="columnFlex">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+     <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" style="width:30px;height:30px"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+
+    <view class="columnFlex"> 
+        <text>总得分: {{userScore}}</text>
+        <text>段位: {{userLevel}}</text>
+    </view>
+
+    <view bindtap='collectionNavigateTo'> 
+        <image src="../img/sc.jpg" style="width:30px;height:30px" ></image>
+    </view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class="columnFlex">
+      <text>答题数: {{}}</text>
+      <text>准确率: {{}}</text>
+  </view>
+
+  <view class='line'></view>
+
+  <view>(image)</view>

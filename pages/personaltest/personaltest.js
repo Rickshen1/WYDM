@@ -5,6 +5,8 @@ const app = getApp();
 var dataItems = require("../../utils/items.js");
 var score = 0;    //本局获得分数
 var userscore;    //用户已有分数
+var optioncolor = ['white', 'white', 'white', 'white', 'white', 'white', 'white']
+
 Page({
 
   /**
@@ -16,7 +18,8 @@ Page({
     page:1,
     options:[],           //用户选择答案
     allOptions:['A','B','C','D','E','F'],   //罗列所有选项序号，方便获取并判断
-    initOptions: [false, false, false, false, false, false, false]
+    initOptions: [false, false, false, false, false, false, false],
+    optioncolor:['white','white','white','white','white','white','white']
   },
   /**
    * 生命周期函数--监听页面加载
@@ -26,17 +29,35 @@ Page({
  */
   secondOver: function () {
     var bakthis = this;
+    clearInterval(timeintv);
     if (bakthis.data.page >= 3) {
-      userscore = wx.getStorageSync("userScore")
-      wx.setStorageSync("userScore", userscore+score)
-      wx.switchTab({
+      userscore = wx.getStorageSync('userScore')
+      userscore = userscore+score
+      console.log(userscore+'userscore')
+      wx.setStorageSync('userScore', userscore)
+      wx.showModal({
+        title: '答题完毕',
+        content: '恭喜本局获得积分：'+score,
+        success:function(res){
+          if(res.confirm){
+            console.log('用户点击确认')
+          }
+        }
+      })
+      wx.navigateBack({
         url: '../onlinetest/onlinetest',
+        success:function(e){
+          var page = getCurrentPages().pop();
+          if(page == undefined || page == null) return;
+          page.onLoad();
+        }
       })
     }
     else{
       bakthis.setData({
         page: bakthis.data.page + 1,
         allItems: dataItems.allItems().list1[bakthis.data.page],
+        optioncolor:optioncolor,
         second: 15,
         options:[]
       })
@@ -55,7 +76,6 @@ Page({
         second: timer-=1
       });
       if (timer <= 0) {
-        clearInterval(timeintv);
         bakthis.setData({
           second: '计时结束',
         });
@@ -76,9 +96,22 @@ Page({
     var bakthis = this;
     if (bakthis.data.allItems.answers.sort().toString().toLowerCase() == bakthis.data.options.sort().toString().toLowerCase() ) {
       score+=10;
-      console.log('答案正确：', bakthis.data.allItems.answers, '得分：',score)
+      console.log('答案正确：', bakthis.data.allItems.answers, '得分：',score);
+      bakthis.secondOver();
+
     }
-    bakthis.secondOver();
+    else{
+     //正确答案提示
+     var newoptioncolor = this.data.optioncolor;
+      for (var i=0; i< this.data.allItems.answers.length;i++){
+        var index = (this.data.allItems.answers[i].toLowerCase().charCodeAt(0) - 97);
+        newoptioncolor[index] = 'yellow';
+     }
+     this.setData({        optioncolor:newoptioncolor    });
+     setTimeout(function(){
+       bakthis.secondOver();
+     },2000) 
+    }
   },
   checkboxchange:function(e){
     var bakthis = this;
@@ -90,7 +123,15 @@ Page({
    *点击收藏按钮
   */
   collectionFun: function(){
-    wx.setStorageSync('collectionID', itemindex);
+    var collectionID = wx.getStorageSync('collectionID') || [];
+    console.log(collectionID);
+    if( (collectionID.indexOf(this.data.page)) == -1){
+      collectionID.unshift(this.data.page);
+      wx.setStorageSync('collectionID', collectionID);
+    }
+    else{
+
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

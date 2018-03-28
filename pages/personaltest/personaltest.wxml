@@ -1,7 +1,7 @@
 <!--提示信息栏-->
 <view class="title" >
   <text class='center'>{{second}}</text>
-  <image src='sc.png' style="width:30px;height:30px" bindtap='collectionFun'/>
+  <image src='../img/sc.jpg' style="width:30px;height:30px" bindtap='collectionFun'/>
 </view>
 
 <view class="items" >
@@ -9,12 +9,19 @@
     <checkbox-group bindchange="checkboxchange">
       <label class="items" wx:for="{{allItems.options}}">
        <!-- <text>{{allItems.options[index]}}</text> -->
-       <checkbox value="{{allOptions[index]}}" checked="{{initOptions[index]}}">{{allItems.options[index]}} </checkbox>
+         <view style="background-color:{{optioncolor[index]}}"> 
+          <checkbox value="{{allOptions[index]}}" checked="{{initOptions[index]}}" >{{allItems.options[index]}} </checkbox>
+         </view>
       </label>
     </checkbox-group>
 </view>
 
 <view>
-  <button bindtap='submitFun' style="margin-top:10px">确认</button>
+  <button bindtap='submitFun'  style="margin-top:10px;background-color:#eeeeee">确认</button>
 </view>
 
+
+<view class="line" ></view>
+<view >
+  <text class="status">{{page}}/3</text>
+</view>

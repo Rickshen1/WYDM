@@ -8,11 +8,11 @@
         </block>
     </view>  
     <view class="tab-item" >
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="personal.png" style="width:30px; height:30px" />
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="../img/personal.png" style="width:30px; height:30px" />
       <text>积分： {{userScore}}</text>
     </view>  
     <view class="tab-item" bindtap='collectionNavigateTo'>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="sc.jpg" style="width:30px; height:30px" />
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="../img/sc.jpg" style="width:30px; height:30px" />
       <text class="userinfo-nickname" >收藏</text>
     </view>  
   </view>  
@@ -21,14 +21,14 @@
   <!--游戏栏-->
   <view class="funBtnGroup">
     <button  bindtap="personaltestBtn" style="width:150px;height:50px">
-      <image src="pw.gif" style="height:20px; width:20px" />
+      <image src="../img/pw.gif" style="height:20px; width:20px" />
       个人挑战
     </button>
   </view>
 
   <view class="funBtnGroup">
     <button class="PKtestBtn"  style="width:150px;height:50px">
-      <image src="pk.png" style="height:20px; width:20px" />
+      <image src="../img/pk.png" style="height:20px; width:20px" />
       PK答题
     </button>
   </view>

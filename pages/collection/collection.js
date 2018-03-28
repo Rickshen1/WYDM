@@ -1,5 +1,7 @@
 // pages/collection/collection.js
 var app = getApp();
+var collectionID;
+var dataItems = require("../../utils/items.js");
 
 Page({
 
@@ -8,28 +10,32 @@ Page({
    */
   data: {
     collectionID:[],
-    data:{}
+    data:{},
+    allItems: dataItems.allItems().list1[0],
+    page: 1,
+    allOptions: ['A', 'B', 'C', 'D', 'E', 'F'],   //罗列所有选项序号，方便获取并判断
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var collectionID=wx.getStorageInfoSync('collectionID')
-    var data = require("../../utils/data.js")
-    if(collectionID){
+    var collectionID=wx.getStorageSync('collectionID') || [];
+    if(collectionID.length != 0){
       this.setData({
-        collectionID: collectionID
+        collectionID: collectionID,
+ 
       })
     }
     else{
-
+      wx.showToast({
+        title: '您尚未收藏',
+        icon:'none',
+        duration:2000
+      })
     }
     
-    var data = data.mtData();
-    this.setData({
-      data:data
-    })
+
   },
 
   /**

@@ -1,0 +1,35 @@
+/* pages/myInfo/myInfo.wxss */
+.firstBar{
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-around;
+}
+
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.line{
+width:100%;
+height:2rpx;
+background:#aaa;
+
+}

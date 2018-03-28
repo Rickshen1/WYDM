@@ -320,6 +320,7 @@ Page({
   },
 
   wxSearchBlur: function () {
+    var that = this;
     console.log("aaa");
     that.setData({ showHotSearch: true });
     that.setData({ hitData: [] });

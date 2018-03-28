@@ -21,3 +21,17 @@
   margin-top: 20px;
   margin-left: 5px;
 }
+
+.line{
+width:100%;
+height:2rpx;
+background:#aaa;
+margin-bottom: 10rpx;
+}
+
+.status{
+  width: 5%;
+  height: 5%;
+  display: flex;
+  justify-content:center;
+  }

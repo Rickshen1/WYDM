@@ -1,35 +1,28 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/map/map",
     "pages/displayData/displayData",
     "pages/search/search",
     "pages/onlinetest/onlinetest",
     "pages/collection/collection",
     "pages/personaltest/personaltest",
-    "pages/callPage/callpage"
+    "pages/callPage/callpage",
+    "pages/myInfo/myInfo"
   ],
   "window":{
     "backgroundTextStyle":"light", 
     "navigationBarBackgroundColor": "#ff0",
-    "navigationBarTitleText": "个人通讯录",    
+    "navigationBarTitleText": "个人测试",    
     "navigationBarTextStyle":"black",
-    "backgroundColor":"#eeeeee"
+    "backgroundColor":" #ffffb3"
   },
   "tabBar":{
     "list":[{
       "pagePath":"pages/index/index",
       "text":"首页"
     },{
-      "pagePath": "pages/map/map",
-      "text": "地图"
-    },{
-      "pagePath":"pages/callPage/callpage",
-      "text":"搜索"
-    },{
-    "pagePath":"pages/onlinetest/onlinetest",
-    "text":"在线测试"
+    "pagePath":"pages/myInfo/myInfo",
+    "text":"我的"
     }]
   },
   "networkTimeout":{

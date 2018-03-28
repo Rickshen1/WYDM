@@ -1,8 +1,41 @@
 /**index.wxss**/
-.userinfo {
+.container{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.button{
+    background-color: #e7e7e7; /* Green */
+    border: none;
+    width:220px;
+    display: inline-block;
+    color:black;
+    border-radius: 12px;
+    
+}
+.buttonFlex {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+.buttonText {
+  color: #aaa;
+  font-size: 10px;   
+}
+
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .userinfo-avatar {
@@ -14,8 +47,4 @@
 
 .userinfo-nickname {
   color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
 }

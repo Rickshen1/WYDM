@@ -1,16 +1,19 @@
-// pages/onlinetest/onlinetest.js
-const app = getApp();
-var score;
+// pages/myInfo/myInfo.js
+const app = getApp()
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userScore: 1,
-    userInfo: {},
+    userInfo: { 'phone': '13810224472' },
     hasUserInfo: false,
+    hasuserLocation: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    userScore:0,
+    userLevel:"青铜菜鸟"
   },
 
   /**
@@ -43,50 +46,25 @@ Page({
         }
       })
     }
-    score =  wx.getStorageSync('userScore')
+
     this.setData({
-          userScore: score
+      userScore:wx.getStorageSync('userScore')
     })
   },
 
-  /**
-   * 获取用户信息
-  */
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  /**
-   * 点击收藏 跳转
-  */
-  collectionNavigateTo: function(e){
-    wx.navigateTo({
-      url: '../collection/collection',
-    })
-  },
-  /**
-   * 点击“个人挑战”跳转
-  */
-  personaltestBtn:function(){
-    wx.showToast({
-      title: '个人挑战开始...',
-      icon: 'succes',
-      duration: 3000,
-      mask: true
-    })
-    wx.navigateTo({
-       url: '../personaltest/personaltest',
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
   
+  }, 
+  /**
+   * 点击收藏按钮
+  */
+  collectionNavigateTo: function (e) {
+    wx.navigateTo({
+      url: '../collection/collection',
+    })
   },
 
   /**

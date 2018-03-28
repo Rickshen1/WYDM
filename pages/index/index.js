@@ -3,73 +3,18 @@
 const app = getApp()
 var initData = 'this is first line\nthis is second line'
 var extraLine = []
-var fileData = require('../../utils/data.js')
+
 
 Page({
   data: {
     motto: 'Hello World',
-    phone:'13810224472',
     userInfo: {'phone':'13810224472'},
     hasUserInfo: false,
     hasuserLocation:false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     text:initData,
-    latitude:'',
-    longitude:'',
-    showData:fileData.mtData().list,
-    userSearchInput:'',
-    cellcgi:'',
-    cellname:'',
-    celllatitude:'',
-    celllongitude:'',
-    cellpci:'',
-    cellrsrp:''
-  },  
-  userSearchInput:function(e){
-    this.setData({
-      userSearchInput:e.detail.value
-    })
-  },
-  //点击搜索
-  searchBtn:function(e){
-    if(this.data.userSearchInput != ''){
-      this.setData({
-        cellcgi:this.data.showData[this.data.userSearchInput].cgi,
-        cellname: this.data.showData[this.data.userSearchInput].cellname,
-        cellpci: this.data.showData[this.data.userSearchInput].pci,
-        cellrsrp: this.data.showData[this.data.userSearchInput].rsrp,
-        celllatitude: this.data.showData[this.data.userSearchInput].latitude,
-        celllongitude: this.data.showData[this.data.userSearchInput].longitude
-      })
-    }
-  },  //获取小区地理位置
-  getcellLoc:function(e) {
-    wx.openLocation({
-      latitude: parseFloat(this.data.celllatitude),
-      longitude: parseFloat(this.data.celllongitude),
-      scale: 28
-    })
-  },
-  openuserLoc:function(e){
-    wx.getLocation({
-      success: function (res) {
 
-          //location: formatLocation(res.longitude, res.latitude)
-          var latitude = res.latitude
-          var longitude =  res.longitude
-          wx.openLocation({
-            latitude: latitude,
-            longitude: longitude,
-            scale: 28
-          })
-      }
-    })
-  },
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
+  },  
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
@@ -98,20 +43,14 @@ Page({
       })
     }
   }, 
-  //获取用户地理位置
-  getuserLoc: function(e) {
-    console.log(e)
-    app.globalData.userlatitude = e.detail.userlatitude
-    var that = this;
-    wx.getLocation({
-      success: function (res) {
-        that.setData({
-          //location: formatLocation(res.longitude, res.latitude)
-          latitude: res.latitude,
-          longitude: res.longitude,
-          hasuserLocation:true
-        })
-      }
+  searchBtn:function(e){
+    wx.navigateTo({
+      url: '../callPage/callpage',
+    })
+  },
+  pkBtn:function(e){
+    wx.navigateTo({
+      url: '../onlinetest/onlinetest',
     })
   },
   getUserInfo: function(e) {

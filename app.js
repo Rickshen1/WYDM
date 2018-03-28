@@ -3,14 +3,11 @@ App({
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
+    //wx.removeStorageSync('collectionID')
     var collectionID = wx.getStorageSync('collectionID')||[]
+    console.log(collectionID)
     logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-    wx.setStorageSync('collectionID', '1')
-    wx.setStorage({
-      key: 'userScore',
-      data: '100',
-    })
+
     // 登录
     wx.login({
       success: res => {
