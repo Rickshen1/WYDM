@@ -34,7 +34,7 @@
          <image src="../img/pk.png" style="width:30px;height:30px"></image>
           <text>石头剪刀布</text>
       </view>
-      <text class="buttonText">有单你就来</text>
+      <text class="buttonText">有胆你就来</text>
       </button>
   </view>
 

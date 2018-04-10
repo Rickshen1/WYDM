@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/welcome/welcome",
     "pages/index/index",
     "pages/displayData/displayData",
     "pages/search/search",
@@ -18,17 +19,21 @@
   "window":{
     "backgroundTextStyle":"light", 
     "navigationBarBackgroundColor": "#ff0",
-    "navigationBarTitleText": "个人测试",    
+    "navigationBarTitleText": "网优DM",    
     "navigationBarTextStyle":"black",
     "backgroundColor":" #ffffb3"
   },
   "tabBar":{
     "list":[{
       "pagePath":"pages/index/index",
-      "text":"首页"
+      "text":"首页",
+      "iconPath": "pages/img/home.png",
+      "selectedIconPath": "pages/img/home_HL.png"
     },{
     "pagePath":"pages/myInfo/myInfo",
-    "text":"我的"
+    "text":"我的",
+    "iconPath": "pages/img/myinfo.jpg",
+    "selectedIconPath": "pages/img/myinfo_HL.jpg"
     }]
   },
   "networkTimeout":{
