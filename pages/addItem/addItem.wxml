@@ -1,0 +1,99 @@
+<!--pages/addItem/addItem.wxml-->
+<view class="toast_mask" wx:if="{{isShowToast}}"></view>
+<view class="toast_content_box" wx:if="{{isShowToast}}">  
+    <view class="toast_content">  
+        <view class="toast_content_text">  
+            {{toastText}}
+        </view>  
+    </view>  
+</view> 
+<view class="page__hd">
+    <view class="page__title">自定义词条</view>
+</view>
+<view class="page__bd">
+ 
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">词条类型</view>
+            </view>
+            <view class="weui-btn-area">
+                <picker bindchange="bindTypePickerChange" value="{{typeIndex}}" range="{{typeArray}}">
+                    {{typeArray[typeIndex]}}
+                </picker>
+            </view>
+       </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">中文名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入词条中文名" bindinput="chineseNameInput"/>
+            </view>
+        </view>
+         <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">英文名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入词条英文名" bindinput="englishNameInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">属性编码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入词条编码" bindinput="codeInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">单位</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入词条单位" bindinput="unitInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">备注</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请输入词条备注" bindinput="remarkInput"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">重要度</view>
+            </view>
+            <view class="weui-btn-area">
+                <picker bindchange="bindImportancePickerChange" value="{{importanceIndex}}" range="{{importanceArray}}">
+                    选择重要度{{importanceArray[importanceIndex]}}
+                </picker>
+            </view>
+       </view>
+       <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">数据类型</view>
+            </view>
+            <view class="weui-btn-area">
+                <picker bindchange="bindDataTypePickerChange" value="{{dataTypeIndex}}" range="{{dataTypeArray}}">
+                    {{dataTypeArray[dataTypeIndex]}}
+                </picker>
+            </view>
+       </view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入定义" style="height: 3.3em" bindinput="meanningInput"/>
+                    <view class="weui-textarea-counter">0/200</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="page__bd page__bd_spacing">
+    <button class="weui-btn" type="primary" plain="true" bindtap="submitBtnClick">提交</button>
+</view>
+            

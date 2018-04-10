@@ -6,7 +6,8 @@ Page({
    */
   data: {
 
-      displayItemJson: {}
+      displayItemJson: {},
+      //displayTitleContentArr:[],
   },
 
   /**

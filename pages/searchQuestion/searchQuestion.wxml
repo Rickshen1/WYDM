@@ -1,0 +1,48 @@
+<!--pages/searchQuestion/searchQuestion.wxml-->
+<!--pages/search/search.wxml-->
+<view class="weui-search-bar" >   
+  <view class="weui-search-bar__form">     
+    <view class="weui-search-bar__box">        
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>        
+      <input type="text" class="weui-search-bar__input" placeholder="输入搜索关键字"  bindfocus="" bindinput="wxSearchInput" bindblur="wxSearchBlur" />        
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" >          
+      <icon type="clear" size="14"></icon>        
+      </view>
+    </view>   
+  </view>  
+</view>  
+<view wx:if="{{showHotSearch}}">
+  <view>
+    <text>*热门搜索*：</text>
+  </view>
+  <view class="myFlex" >
+    <view wx:for="{{hotSearchItems}}" wx:key="{{index}}">
+    <button class="flexItem" plain="true" data-hot="{{item}}" bindtap="itemClick">{{item}}</button>
+  </view>
+  </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title" >
+    <view class="flex-column" style="display:flex;flex-direction:column-reverse">
+    <view class="weui-cell" wx:for="{{hitData}}" wx:key="postId" wx:for-index="key" data-postid="{{item.postId}}" id="{{key}}" bindtap="hitItemClick" >
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" >
+            <image src="../img/0-1.png" style="width: 50px; height: 50px; display: block"/>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{item.postReplyArray.length}}</view>
+        </view>
+        <view class="weui-cell__bd" >
+            <view style="display:flex;flex-direction:row;justify-content:space-between;">
+                <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userName}}</view>
+                <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userCom}}</view>
+            </view>
+            <view style="font-size: 13px;color: #888888;">{{item.postTitle}}</view>
+            <view style="display:flex;flex-direction:row;justify-content:flex-end;">
+                
+                <view style="font-size: 13px;color: #888888;">{{item.postTime}}</view>
+            </view>
+        </view>
+    </view>
+    </view>
+</view>
+
+
+

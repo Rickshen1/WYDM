@@ -7,7 +7,13 @@
     "pages/collection/collection",
     "pages/personaltest/personaltest",
     "pages/callPage/callpage",
-    "pages/myInfo/myInfo"
+    "pages/myInfo/myInfo",
+	"pages/postHomePage/postHomePage",
+    "pages/questionPage/questionPage",
+    "pages/raiseQuestion/raiseQuestion",
+    "pages/allQuestions/allQuestions",
+    "pages/searchQuestion/searchQuestion",
+    "pages/addItem/addItem"
   ],
   "window":{
     "backgroundTextStyle":"light", 

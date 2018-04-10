@@ -21,7 +21,7 @@
     </button>
     
 
-    <button class="button">
+    <button class="button" bindtap="questionAnswerBtn">
       <view class="buttonFlex">
          <image src="../img/coffee.png" style="width:30px;height:30px"></image>
          <text>网优随便答</text>

@@ -1,15 +1,39 @@
 <!--pages/displayData/displayData.wxml-->
-<view class="page">
-<!--页头-->
-<view class="page__hd">
-<text style="width=100%;font-weight:bold;justify-content:center;">{{displayItemJson.chineseName}}</text>
-</view>
-<view class="page__bd"></view>
-<view style="width=100%;border-top:1rpx solid #ccc">英文名:{{displayItemJson.englishName}}</view>
-<view style="width=100%;border-top:1rpx solid #ccc">定义:{{displayItemJson.meanning}}</view>
-<!--view style="width=100%;border-top:1rpx solid #ccc">latitude:{{displayItemJson.latitude}}</view>
-<view style="width=100%;border-top:1rpx solid #ccc">pci:{{displayItemJson.pci}}</view>
-<view style="width=100%;border-top:1rpx solid #ccc">rsrp:{{displayItemJson.rsrp}}</view-->
-</view>
 
-
+<view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+        
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">中文名</view>
+            <view class="weui-media-box__desc">{{displayItemJson.chineseName}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">英文名</view>
+            <view class="weui-media-box__desc">{{displayItemJson.englishName}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">含义</view>
+            <view class="weui-media-box__desc">{{displayItemJson.meanning}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">规范编码</view>
+            <view class="weui-media-box__desc">{{displayItemJson.code}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">重要性</view>
+            <view class="weui-media-box__desc">{{displayItemJson.importance}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">数据类型</view>
+            <view class="weui-media-box__desc">{{displayItemJson.dataType}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">单位</view>
+            <view class="weui-media-box__desc">{{displayItemJson.unit}}</view>
+        </view>
+        <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">备注</view>
+            <view class="weui-media-box__desc">{{displayItemJson.remark}}</view>
+        </view>
+    </view>
+</view>

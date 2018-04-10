@@ -1,0 +1,23 @@
+<!--pages/allQuestions/allQuestions.wxml-->
+<text>所有提问</text>
+<view class="weui-cells weui-cells_after-title" >
+    <view class="flex-column" style="display:flex;flex-direction:column-reverse">
+    <view class="weui-cell" wx:for="{{postArray}}" wx:key="postId" wx:for-index="key" id="{{item.postId}}" bindtap="postItemClick" >
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" >
+            <image src="../img/0-1.png" style="width: 50px; height: 50px; display: block"/>
+            <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{item.postReplyArray.length}}</view>
+        </view>
+        <view class="weui-cell__bd" >
+            <view style="display:flex;flex-direction:row;justify-content:space-between;">
+                <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userName}}</view>
+                <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userCom}}</view>
+            </view>
+            <view style="font-size: 13px;color: #888888;">{{item.postTitle}}</view>
+            <view style="display:flex;flex-direction:row;justify-content:flex-end;">
+                
+                <view style="font-size: 13px;color: #888888;">{{item.postTime}}</view>
+            </view>
+        </view>
+    </view>
+    </view>
+</view>

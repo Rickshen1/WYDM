@@ -48,6 +48,11 @@ Page({
       url: '../callPage/callpage',
     })
   },
+  questionAnswerBtn: function (e) {
+    wx.navigateTo({
+      url: '../postHomePage/postHomePage',
+    })
+  },
   pkBtn:function(e){
     wx.navigateTo({
       url: '../onlinetest/onlinetest',

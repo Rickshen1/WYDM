@@ -1,0 +1,29 @@
+<!--pages/raiseQuestion/raiseQuestion.wxml-->
+<!--text>pages/raiseQuestion/raiseQuestion.wxml</text-->
+<view class="toast_mask" wx:if="{{isShowQuestionToast}}"></view>
+<view class="toast_content_box" wx:if="{{isShowQuestionToast}}">  
+    <view class="toast_content">  
+        <view class="toast_content_text">  
+            {{questionToastText}}
+        </view>  
+    </view>  
+</view> 
+<view class="weui-cells__title">标题</view>
+<view style="border:2rpx solid #aaa;border-radius:10px">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="请输入标题" bindblur="bindQuestionTitleBlur" bindinput="bindQuestionTitleInput"/>
+        </view>
+    </view>
+</view>
+
+<view class="weui-cells__title">内容</view>
+<view style="border:2rpx solid #aaa;border-radius:10px">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="  请输入问题内容" style="height: 3.3em" bindblur="bindQuestionContentBlur" bindinput="bindQuestionContentInput"/>
+            <view class="weui-textarea-counter">0/200</view>
+        </view>
+    </view>
+</view>
+<button class="weui-btn" type="primary" plain="true" bindtap="submitQuestionBtn">提交</button>

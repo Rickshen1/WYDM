@@ -1,0 +1,75 @@
+<!--pages/postHomePage/postHomePage.wxml-->
+<view class="weui-search-bar" bindtap="navigateToSearchQuestion">   
+  <view class="weui-search-bar__form">     
+    <view class="weui-search-bar__box">        
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>        
+      <input type="text" class="weui-search-bar__input" placeholder="请输入规范中文关键字"  value="{{searchValue}}" />        
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">          
+      <icon type="clear" size="14"></icon>        
+      </view>
+    </view>   
+  </view>  
+</view>
+<view class="weui-flex justify">
+    <view class="weui-flex__item">
+        <button class="weui-btn" type="default" plain="true" bindtap="raiseQuestionBtn">我要提问</button>
+    </view>
+    <view class="weui-flex__item">
+        <button class="weui-btn" type="default" plain="true" bindtap="allQuestionBtn">所有问题</button>
+    </view>
+</view>
+<!--button bindtap="testBtnClick">testButton</button-->
+<view class="page">
+    <view class="page__bd">
+        
+        <view class="weui-panel__hd">最新讨论</view>
+        
+        <view class="weui-cells weui-cells_after-title" >
+            <view class="flex-column" style="display:flex;flex-direction:column-reverse;">
+                <view class="weui-cell" style="border-bottom:2px solid #aaa;" wx:for="{{postArray}}" wx:key="postId" wx:for-index="key" id="{{item.postId}}" bindtap="postItemClick" wx:if="{{item.hotFlag==0}}">
+                    <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" >
+                        <image src="../img/0-1.png" style="width: 50px; height: 50px; display: block"/>
+                        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{item.postReplyArray.length}}</view>
+                    </view>
+                    <view class="weui-cell__bd" >
+                        <view style="display:flex;flex-direction:row;justify-content:space-between;">
+                            <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userName}}</view>
+                            <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userCom}}</view>
+                        </view>
+                        <view style="font-size: 13px;color: #888888;">{{item.postTitle}}</view>
+                        <view style="display:flex;flex-direction:row;justify-content:flex-end;">
+                            
+                            <view style="font-size: 13px;color: #888888;">{{item.postTime}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        
+        <view class="weui-panel__hd">热门讨论</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="flex-column" style="display:flex;flex-direction:column-reverse">
+                <view class="weui-cell" style="border-bottom:2px solid #aaa;" wx:for="{{postArray}}" wx:key="postId" wx:for-index="key" id="{{item.postId}}" bindtap="postItemClick" wx:if="{{item.hotFlag==1}}">
+                    
+                    <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" >
+                        <image src="../img/0-2.png" style="width: 50px; height: 50px; display: block"/>
+                        <view class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{item.postReplyArray.length}}</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <view style="display:flex;flex-direction:row;justify-content:space-between;">
+                            <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userName}}</view>
+                            <view style="font-size: 13px;color: #888888;">{{userArray[item.postUserId].userCom}}</view>
+                        </view>
+                        <view style="font-size: 13px;color: #888888;">{{item.postTitle}}</view>
+                        <view style="display:flex;flex-direction:row;justify-content:flex-end;">
+                            
+                            <view style="font-size: 13px;color: #888888;">{{item.postTime}}</view>
+                        </view>
+                        </view>
+                    
+                </view>
+            </view>
+        </view>
+    </view>
+    
+</view>

@@ -1,0 +1,58 @@
+<!--pages/questionPage/questionPage.wxml-->
+<view class="toast_mask" wx:if="{{isShowToast}}"></view>
+<view class="toast_content_box" wx:if="{{isShowToast}}">  
+    <view class="toast_content">  
+        <view class="toast_content_text">  
+            {{toastText}}
+        </view>  
+    </view>  
+</view> 
+<view class="page">
+    
+    <view class="page__bd">
+        
+        <view class="weui-panel">
+            
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{postUser.userName}} 提问：{{postData.postTitle}}</view>
+                    <view class="weui-media-box__desc">{{postData.postContent}}</view>
+                    <view class="weui-media-box__info">
+                        <view class="weui-media-box__info__meta">{{postUser.userName}}</view>
+                        <view class="weui-media-box__info__meta">{{postData.postTime}}</view>
+                        <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{postUser.userCom}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <scroll-view style="height:290px" scroll-y="true">
+            <view class="weui-panel"  >
+                
+                <view class="weui-panel__bd" wx:for="{{replyArray}}" wx:key="{{replyId}}">
+                    <view class="weui-media-box weui-media-box_text" style="width=100%;border-top:1rpx solid #ccc">
+                        <view class="weui-media-box__title weui-media-box__title_in-text">{{userArray[item.replyUserId].userName}} 回复#{{index}}</view>
+                        <view class="weui-media-box__desc">{{item.replyContent}}</view>
+                        <view class="weui-media-box__info">
+                            <!--view class="weui-media-box__info__meta">{{userArray[item.replyUserId].userName}}</view-->
+                            <view class="weui-media-box__info__meta">{{item.replyTime}}</view>
+                            <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">{{postUser.userCom}}</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入回复内容" style="height: 3.3em" bindblur="bindAnswerAreaBlur" bindinput="bindAnserAreaInput"/>
+                    <view class="weui-textarea-counter">0/100</view>
+                </view>
+            </view>
+        </view>
+        
+        <button class="weui-btn" type="primary" bindtap="replyClick">我要回答</button>
+        <!--button class="weui-btn" type="primary" bindtap="replyClick2">我要回答</button-->
+    </view>
+    
+</view>
+
