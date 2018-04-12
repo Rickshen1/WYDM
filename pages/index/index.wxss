@@ -24,11 +24,19 @@
   display: flex;
   flex-direction: row;
   align-items: left;
+  height:40%;
+  align-content: left;
 }
 
 .buttonText {
-  color: #aaa;
-  font-size: 10px;   
+  align-items: left;
+  color: #AAA;
+  font-size: 10px;
+  height: 40%;
+  text-align:left;
+  align-content: left;
+  float:left;
+  margin: 20rpx;   
 }
 
 .columnFlex {
@@ -47,4 +55,8 @@
 
 .userinfo-nickname {
   color: #aaa;
+}
+
+.line{
+  margin-top: 20rpx;
 }

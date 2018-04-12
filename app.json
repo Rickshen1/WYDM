@@ -9,12 +9,13 @@
     "pages/personaltest/personaltest",
     "pages/callPage/callpage",
     "pages/myInfo/myInfo",
-	"pages/postHomePage/postHomePage",
+	  "pages/postHomePage/postHomePage",
     "pages/questionPage/questionPage",
     "pages/raiseQuestion/raiseQuestion",
     "pages/allQuestions/allQuestions",
     "pages/searchQuestion/searchQuestion",
-    "pages/addItem/addItem"
+    "pages/addItem/addItem",
+    "pages/newslist/newslist"
   ],
   "window":{
     "backgroundTextStyle":"light", 
@@ -29,6 +30,11 @@
       "text":"首页",
       "iconPath": "pages/img/home.png",
       "selectedIconPath": "pages/img/home_HL.png"
+    },{
+      "pagePath": "pages/newslist/newslist",
+      "text": "快报",
+      "iconPath": "pages/img/news.jpg",
+      "selectedIconPath": "pages/img/news_HL.jpg"
     },{
     "pagePath":"pages/myInfo/myInfo",
     "text":"我的",

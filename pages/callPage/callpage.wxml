@@ -11,28 +11,6 @@
   </view>  
 </view>
 
-<!--view class="container"> 
-  
-    <view class='page_row' bindtap="navigateToSearch">  
-        <view class="search">  
-            <view class="df search_arr">  
-                <icon class="searchcion" size='20' type='search'></icon>  
-                <input class="" disabled placeholder="请输入查找关键字" value="{{searchValue}}"/>  
-            </view>  
-        </view>  
-        <view class='searchLabel'>搜索</view>  
-    </view>  
-    <button bindtap="btnClick">{{btnText}}</button>
-    <scroll-view style="height:300px" scroll-y="true" bindscrolltolower="scrollToLowerHandler">
-        <block wx:for="{{listData}}" wx:key="{{cgi}}">
-           <view class="tr bg-g" id="{{index}}" bindtap="itemClick" wx:if="{{index %2 == 0}}">{{item.cellname}}</view>
-           <view class="tr" id="{{index}}" bindtap="itemClick" wx:else>{{item.cellname}}</view>
-           
-        </block>
-    </scroll-view>
-    
-</view>-->
-
 <view class='text'>
   <text>指标分类导航</text>
 </view>

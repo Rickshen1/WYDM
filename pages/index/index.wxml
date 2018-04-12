@@ -19,7 +19,7 @@
       </view>
       <text class="buttonText">足不出户，便知网优那些事儿</text>
     </button>
-    
+    <view class="line"></view>
 
     <button class="button" bindtap="questionAnswerBtn">
       <view class="buttonFlex">
@@ -28,7 +28,8 @@
       </view>
       <text class="buttonText">你问我答，答不上来算我输</text>
     </button>
- 
+    <view class="line"></view>
+    
     <button class="button" bindtap='pkBtn'>
       <view class="buttonFlex">
          <image src="../img/pk.png" style="width:30px;height:30px"></image>
