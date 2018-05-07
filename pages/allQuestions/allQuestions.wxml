@@ -1,7 +1,7 @@
 <!--pages/allQuestions/allQuestions.wxml-->
 <text>所有提问</text>
 <view class="weui-cells weui-cells_after-title" >
-    <view class="flex-column" style="display:flex;flex-direction:column-reverse">
+    <view class="flex-column" style="display:flex;flex-direction:column-reverse" style='border:1px solid #fff'>
     <view class="weui-cell" wx:for="{{postArray}}" wx:key="postId" wx:for-index="key" id="{{item.postId}}" bindtap="postItemClick" >
         <view class="weui-cell__hd" style="position: relative;margin-right: 10px;" >
             <image src="../img/0-1.png" style="width: 50px; height: 50px; display: block"/>

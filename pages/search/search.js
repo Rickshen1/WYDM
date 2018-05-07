@@ -7,13 +7,13 @@ Page({
   data: {
     content_show: true,
     searchValue: '',
-    resJsonData:[],
-    testVal:'button',
+    resJsonData: [],
+    testVal: 'button',
     hitData: [],
-    showHotSearch:true,
-    hotSearchItems: ["TA定时器", "参考信号功率", "北向网元标识", "SI无线帧号偏移","DRX循环周期长度"],
-    historySearchItems: ["SI窗口长度", "SI无线帧号偏移", "参考信号功率", "下行Gap持续时间系数"],
-    dataForSearch:[
+    showHotSearch: true,
+    hotSearchItems: ["小区偏置", "eMTC起始子帧", "小区上行带宽", "PHR禁止定时器时长", "PUCCH期望功率"],
+    historySearchItems: ["PUCCH期望功率", "PHR禁止定时器时长", "eMTC起始子帧", "PRACH频域偏移"],
+    dataForSearch: [
       {
         cgi: '460-00-123-5',
         cellname: '海南省海淀区海兴大厦5',
@@ -60,78 +60,76 @@ Page({
       },
     ],
     allGuiFanArr: [],
-    
+
     //remoteIpPort:getApp().globalData.remoteIp
-  }, 
-  search:function(key){
+  },
+  search: function (key) {
     var that = this;
-    if(key==""){
-      that.setData({showHotSearch:true});
+    if (key == "") {
+      that.setData({ showHotSearch: true });
       //that.setData({hitData:allGuiFanArr});
       that.setData({ hitData: [] });
-      return ;
+      return;
     }
-    that.setData({showHotSearch:false});
-    var keyArr=key.trim().split(" ");
+    that.setData({ showHotSearch: false });
+    var keyArr = key.trim().split(" ");
     var arr = [];
-    for(let typeIndex=0;typeIndex<that.data.allGuiFanArr.length;++typeIndex){
+    //console.log(that.data.allGuiFanArr.length)
+    for (let typeIndex = 0; typeIndex < that.data.allGuiFanArr.length; ++typeIndex) {
       var typeItemData = that.data.allGuiFanArr[typeIndex];
-      for (let guiFanIndex = 0; guiFanIndex < typeItemData.arrData.length;++guiFanIndex){
-        var guiFanData = typeItemData.arrData[guiFanIndex];
-        for (let keyIndex = 0; keyIndex < keyArr.length; ++keyIndex) {
-          //console.log(guiFanData);
-          if (guiFanData.chineseName.indexOf(keyArr[keyIndex]) >= 0) {
-            arr.push(guiFanData);
-            break;
-            //console.log(that.data.allGuiFanArr[i]);
-          }
+      //console.log(typeItemData)
+      for (let keyIndex = 0; keyIndex < keyArr.length; ++keyIndex) {
+        //console.log(guiFanData);
+        if (typeItemData.chineseName.indexOf(keyArr[keyIndex]) >= 0) {
+          arr.push(typeItemData);
+          break;
+          //console.log(that.data.allGuiFanArr[i]);
         }
       }
     }
-    if(arr.length==0){
-      that.setData({hitData:[{show:true,chineseName:"未找到相关规范"}]});
-    }else{
-      that.setData({hitData:arr});
+    if (arr.length == 0) {
+      that.setData({ hitData: [{ show: true, chineseName: "未找到相关规范" }] });
+    } else {
+      that.setData({ hitData: arr });
     }
     //console.log("name:"+that.data.hitData[0].chineseName+", showHot:"+that.data.showHotSearch);
   },
   getSearchInput: function (e) {
     var tmpVal = e.detail.value;
-    this.setData({searchValue: tmpVal });
+    this.setData({ searchValue: tmpVal });
     if (!tmpVal || tmpVal.length == 0) {
-      this.setData({content_show: false,});
-      this.setData({ resJsonData:[]});
+      this.setData({ content_show: false, });
+      this.setData({ resJsonData: [] });
     }
     //console.log(this.data.searchValue);
   },
   itemClick: function (e) {
-    console.log("select:");
+    //console.log("select:");
     //var dataArr = this.data.allGuiFanArr;
     var selectedKey = e.currentTarget.dataset.gag;
+     
     //console.log("select:"+selectedKey);
+   
     //console.log(this.data.allGuiFanArr);
     for (let typeIndex = 0; typeIndex < this.data.allGuiFanArr.length; ++typeIndex) {
-      var typeItemData = this.data.allGuiFanArr[typeIndex];
-      for (let guiFanIndex = 0; guiFanIndex < typeItemData.arrData.length; ++guiFanIndex) {
-        var guiFanData = typeItemData.arrData[guiFanIndex];
-        //console.log("selectedKey:"+selectedKey) ;
-        //console.log("this is guiFanData");
-        //console.log(guiFanData);
-        if (guiFanData["chineseName"] == selectedKey) {
-          var tmpStr = JSON.stringify(guiFanData);
-          //console.log(tmpStr);
-          wx.navigateTo({ url: "../displayData/displayData?node=" + tmpStr });
+      var typeItemData = this.data.allGuiFanArr[typeIndex]; 
+      if (typeItemData.chineseName == selectedKey) {
+        //console.log(typeItemData);
+        var tmpStr = JSON.stringify(typeItemData);
+           //console.log(tmpStr);
+           wx.setStorageSync("curDisplayItemStr", tmpStr)
+           wx.navigateTo({ url: "../displayData/displayData?node=" });//+ tmpStr
           //console.log(tmpStr);
           break;
         }
-      }
+       
     }
-    
+
   },
   searchItem: function (e) {
-    
+
     var that = this;
-    var dataArr=that.data.dataForSearch;
+    var dataArr = that.data.dataForSearch;
     var searchStr = that.data.searchValue;
     if (!searchStr || searchStr.length == 0) {
       this.setData({ content_show: false, });
@@ -139,21 +137,21 @@ Page({
       return;
     }
     var arr = [];
-    for (var i = 0; i < dataArr.length;i++){
+    for (var i = 0; i < dataArr.length; i++) {
       var tmpRes = dataArr[i].cellname.indexOf(searchStr);
       //console.log("input:"+that.searchValue+"data:"+dataArr[i].cellname+",tmp:"+tmpRes);
-      if(tmpRes!=-1){
+      if (tmpRes != -1) {
         arr.push(dataArr[i]);
       }
     }
     //var str=JSON.stringify(arr);
     //console.log("len:"+arr.length);
-    if(arr.length>0){
-      that.setData({resJsonData:arr});
-      that.setData({content_show:true});
-    }else{
-      that.setData({resJsonData:[]});
-      that.setData({content_show:false})
+    if (arr.length > 0) {
+      that.setData({ resJsonData: arr });
+      that.setData({ content_show: true });
+    } else {
+      that.setData({ resJsonData: [] });
+      that.setData({ content_show: false })
     }
     //console.log(this.data.resJsonData);
     /*
@@ -199,62 +197,64 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var guiFanData = (wx.getStorageSync("allDataList")||[]);
-    this.setData({allGuiFanArr:guiFanData});
+    var guiFanData = (wx.getStorageSync("allDataList") || []);
+    console.log(guiFanData)
+    this.setData({ allGuiFanArr: guiFanData });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
-  wxSerchFocus:function(){
-    this.setData({ testVal:"focus"});
+  wxSerchFocus: function () {
+    this.setData({ testVal: "focus" });
   },
   wxSearchInput: function (e) {
+    console.log(e.detail.value)
     this.search(e.detail.value);
     //this.setData({ testVal: "input" });
   },
